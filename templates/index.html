@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Divisor de Base de Dados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="content">
+        {% with messages = get_flashed_messages() %}{% if messages %}<ul class="flash-messages">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>{% endif %}{% endwith %}
+        <h1>Divida sua base de dados</h1>
+        <p class="explanation">
+            Aqui você pode fazer upload de um arquivo Excel para dividí-lo em várias abas. 
+            Basta escolher o arquivo e especificar o número de registros por aba.<br>
+            Os arquivos devem estar nas extensões xlsx ou csv.
+        </p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file-upload">Escolha um arquivo Excel:</label>
+            <input type="file" name="file" id="file-upload" accept=".xlsx, .csv">
+            <label for="registros-por-aba">Registros por aba:</label>
+            <input type="number" name="registros_por_aba" id="registros-por-aba" min="1" required>
+            <button type="submit">Dividir Base de Dados</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <p>Desenvolvido por Vitor Almeida</p>
+        <p>Fale comigo no <a href="https://api.whatsapp.com/send?phone=5562981202900&text=Famos%20falar%20sobre%20tecnologia%253F%20" target="_blank" rel="noopener">WhatsApp</a></p>
+        <p>Email: vitor.fernandes1993@hotmail.com</p>
+    </footer>
+</body>
+</html>
